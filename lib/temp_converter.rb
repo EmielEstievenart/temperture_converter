@@ -20,6 +20,8 @@ class TempConverter
   end
 
   def commandline_temperature(temp)
+    puts "Temperatuur uit powershell"
+
 
 kelvin = (temp*9/5)+32
 fahr = temp+273.15
@@ -29,6 +31,8 @@ fahr = temp+273.15
   puts to_html(temp, fahr, kelvin)
   end
   def url_temperature(link)
+    puts "Temperatuur uit url"
+
 
     def open(url)
       Net::HTTP.get(URI.parse(url))
@@ -48,11 +52,18 @@ puts to_html(temp, fahr, kelvin)
 end
 
     def file_temperature(file_name)
-      
+      puts "Temperatuur uit textdocument"
+      temp = 0
       File.open(file_name, "r") do |f|
       f.each_line do |line|
-        puts line
-      end
+        temp = line.to_f
+        end
+        kelvin = (temp*9/5)+32
+        fahr = temp+273.15
+
+        puts to_text(temp, fahr, kelvin)
+        puts to_json(temp, fahr, kelvin)
+        puts to_html(temp, fahr, kelvin)
     end
 
 end
