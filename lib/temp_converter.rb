@@ -1,17 +1,19 @@
 class TempConverter
 
-  def to_text(celsius, fahrenheit, kelvin)
+
+
+  def self.to_text(celsius, fahrenheit, kelvin)
     puts "Temperatuur: "
     puts "#{celsius} °C"
     puts  "#{fahrenheit} °F"
     puts "#{kelvin} °K"
   end
 
-  def to_json(celsius, fahrenheit, kelvin)
+  def self.to_json(celsius, fahrenheit, kelvin)
     puts "{celsius: #{celsius} °C, fahrenheit: #{fahrenheit} °F, kelvin: #{kelvin} °K}"
   end
 
-  def to_html(celsius, fahrenheit, kelvin)
+  def self.to_html(celsius, fahrenheit, kelvin)
     puts "<div>"
     puts "  <div>#{celsius} °C</div>"
     puts "  <div>#{fahrenheit} °F</div>"
@@ -19,22 +21,35 @@ class TempConverter
     puts "</div>"
   end
 
-  def commandline_temperature(temp)
-    puts "Temperatuur uit powershell"
-
-
-kelvin = (temp*9/5)+32
-fahr = temp+273.15
-
-  puts to_text(temp, fahr, kelvin)
-  puts to_json(temp, fahr, kelvin)
-  puts to_html(temp, fahr, kelvin)
+  def self.to_print_all(c, f, k)
+   to_text(c, f, k)
+   to_json(c, f, k)
+   to_html(c, f, k)
   end
-  def url_temperature(link)
+
+def self.calc_kelvin(t)
+  return (t + 273.15)
+end
+
+
+
+def self.calc_fahr(t)
+return ((t*9/5)+32)
+end
+
+
+  def self.commandline_temperature(temp)
+    puts "Temperatuur uit powershell"
+kelvin = calc_kelvin(temp)
+fahr = calc_fahr(temp)
+
+  to_print_all(temp, fahr, kelvin)
+  end
+  def self.url_temperature(link)
     puts "Temperatuur uit url"
 
 
-    def open(url)
+    def self.open(url)
       Net::HTTP.get(URI.parse(url))
     end
 
@@ -42,29 +57,30 @@ fahr = temp+273.15
     temp = page_content
     temp = temp.to_f
 
-kelvin = (temp*9/5)+32
-fahr = temp+273.15
+    kelvin = calc_kelvin(temp)
+    fahr = calc_fahr(temp)
 
-puts to_text(temp, fahr, kelvin)
-puts to_json(temp, fahr, kelvin)
-puts to_html(temp, fahr, kelvin)
+to_print_all(temp, fahr, kelvin)
 
 end
 
-    def file_temperature(file_name)
-      puts "Temperatuur uit textdocument"
-      temp = 0
-      File.open(file_name, "r") do |f|
-      f.each_line do |line|
-        temp = line.to_f
-        end
-        kelvin = (temp*9/5)+32
-        fahr = temp+273.15
+def self.open_file(file_name)
 
-        puts to_text(temp, fahr, kelvin)
-        puts to_json(temp, fahr, kelvin)
-        puts to_html(temp, fahr, kelvin)
+  File.open(file_name, "r") do |f|
+  f.each_line do |line|
+    return line.to_f
+    end
+  end
+end
+
+    def self.file_temperature(file_name)
+      puts "Temperatuur uit textdocument"
+      temp = open_file(file_name)
+        kelvin = calc_kelvin(temp)
+        fahr = calc_fahr(temp)
+
+        to_print_all(temp, fahr, kelvin)
     end
 
-end
+
 end
