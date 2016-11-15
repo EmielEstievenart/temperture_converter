@@ -14,9 +14,7 @@ client.username = '70B3D57ED00012B2'
 client.password = 'c8iuTSccnypK1eoFzEb/OoqB2FVAiFg/aEaYesnNf4w='
 client.connect
 client.get('70B3D57ED00012B2/devices/000000007DD44BFC/up') do |topic,message|
-
 puts tuid = JSON.parse(message)['fields']['temperature']
-
 puts topic
 tuid = tuid.to_f
 

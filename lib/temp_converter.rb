@@ -45,4 +45,8 @@ class TempConverter
     to_print_all(temp, fahr, kelvin)
   end
 
+  def self.get_file_temperature(file_name)
+    return TextReader.open_file(file_name)
+  end
+
 end
