@@ -1,0 +1,7 @@
+lib/url_reader.rb 02acb24d8ec1b4d265beaf9c74c488889c246d6f
+lib/text_reader.rb bd2ed71e1186db8f3567114634f51779a98b880a
+lib/json_printer.rb 5a83a881f72a571a7fc732806149959c884d1f0c
+lib/text_printer.rb 26d5ac03ee7bb7732961ae2fefba367af5e1af90
+lib/html_printer.rb 4abe8199e0d376d471b1c11e55385c6f6ad9268b
+lib/temp_converter.rb f427bd2d1d57a88bb671f21ada7ca82b2128948f
+lib/temperature_converter_EmielEst.rb 0fd015ef82833deea9a5bb40f38a3afe0bb1d17b

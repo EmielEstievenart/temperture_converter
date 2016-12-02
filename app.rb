@@ -1,5 +1,5 @@
-require './lib/temp_converter.rb'
-#require './lib/text_printer.rb'
+require 'temp_converter.rb'
+#require 'text_printer.rb'
 require 'net/http'
 require 'uri'
 require 'rubygems'

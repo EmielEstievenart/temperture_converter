@@ -1,8 +1,8 @@
-require './lib/text_reader.rb'
-require './lib/url_reader.rb'
-require './lib/text_printer.rb'
-require './lib/json_printer.rb'
-require './lib/html_printer.rb'
+require 'text_reader.rb'
+require 'url_reader.rb'
+require 'text_printer.rb'
+require 'json_printer.rb'
+require 'html_printer.rb'
 
 class TempConverter
 

@@ -1,4 +1,5 @@
 class TextPrinter
+  #Prints all 3 temperatures. 
   def self.print(celsius,fahrenheit, kelvin)
       puts "Temperatuur: "
       puts "#{celsius} °C"
