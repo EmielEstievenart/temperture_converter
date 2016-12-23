@@ -1,3 +1,6 @@
+require 'mqtt'
+
+
 class MqttReader
 def self.read()
   client = MQTT::Client.new
