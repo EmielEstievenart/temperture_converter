@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'temperature_converter_EmielEst'
-  s.version     = '1.0.2'
-  s.date        = '2016-11-18'
+  s.version     = '1.0.5'
+  s.date        = '2016-12-23'
   s.summary     = "Easy commands to convert temperatures"
   s.description = "Use commands to convert temperatures from different sources"
   s.authors     = ["Emiel"]
