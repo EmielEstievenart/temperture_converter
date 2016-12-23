@@ -19,6 +19,12 @@ link = 'http://labict.be/software-engineering/temperature/api/temperature/fake'
 OptionParser.new do |opts|
   c = 0
   opts.banner = "Usage: ruby app.rb [options]"
+
+opts. on("-h","--help", "dispay all opts") do
+  puts opts
+  exit
+end
+
   #temperatuur uit file
   opts.on("-file", "string file directory" ) do
     puts "this is the temperature from your file"
@@ -32,7 +38,7 @@ OptionParser.new do |opts|
   end
 
   #temperatuur uit cmd
-  opts.on("-t", "--string temperature", String, "enter your temperature") do |temperature|
+  opts.on("-c", "--command", String, "enter your temperature") do |temperature|
 
     puts "temperature from command window"
     c = temperature.to_f
@@ -40,7 +46,7 @@ OptionParser.new do |opts|
 
   #temperatuur uit qtmt
 
-  opts.on("-m", "temperature van mqtt") do
+  opts.on("-m","--mqtt", "temperature van mqtt") do
 
     client = MQTT::Client.new
     client.host = 'staging.thethingsnetwork.org'
@@ -59,13 +65,13 @@ OptionParser.new do |opts|
   k = TempConverter.calc_kelvin(c)
 
   #Tweede opts om de text te printen naar volgens de voorwaarde
-  opts.on("--text", "enter your file directory" ) do
+  opts.on("--text", "temperature in plain text" ) do
     TextPrinter.print(c, f, k)
   end
-  opts.on("--json", "enter your file directory" ) do
+  opts.on("--json", "temperature in JSON-string" ) do
     JsonPrinter.print(c, f, k)
   end
-  opts.on("--html", "enter your file directory" ) do
+  opts.on("--html", "temperature in html format" ) do
     HtmlPrinter.print(c, f, k)
   end
 end.parse!
